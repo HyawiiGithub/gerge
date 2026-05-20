@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +13,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
+
+/* =========================
+ROOT COLORS
+========================= */
 
 :root{
     --bg:#dfe7ed;
@@ -56,32 +59,51 @@ LOADING SCREEN
 .loader{
     position:fixed;
     inset:0;
-    background:#0b0d10;
+    background:var(--bg);
     z-index:999999;
     display:flex;
     justify-content:center;
     align-items:center;
-    flex-direction:column;
     overflow:hidden;
-    animation:loaderFade 1s ease forwards;
-    animation-delay:4s;
+    transition:1s ease;
+}
+
+.loader.hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+.loader-content{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    animation:loaderEntrance 1.2s ease;
+}
+
+.loader-logo-img{
+    width:140px;
+    margin-bottom:25px;
+    animation:floatLogo 4s ease-in-out infinite;
 }
 
 .loader-logo{
     font-family:'Cormorant Garamond', serif;
     font-size:5rem;
     letter-spacing:10px;
-    color:#d6bc8d;
+    color:var(--text);
     animation:pulse 2s ease-in-out infinite;
 }
 
 .loader-line{
-    width:220px;
+    width:240px;
     height:2px;
     background:rgba(255,255,255,0.08);
     margin-top:30px;
     overflow:hidden;
     position:relative;
+    border-radius:100px;
 }
 
 .loader-line::after{
@@ -89,59 +111,45 @@ LOADING SCREEN
     position:absolute;
     height:100%;
     width:40%;
-    background:#d6bc8d;
+    background:var(--text);
     animation:loadingBar 2.5s ease infinite;
 }
 
 .loader-text{
-    margin-top:25px;
-    font-size:0.8rem;
+    margin-top:24px;
+    font-size:0.78rem;
     letter-spacing:4px;
-    opacity:0.8;
+    opacity:0.75;
 }
 
 .loader-credit{
-    position:absolute;
-    bottom:40px;
-    font-size:0.7rem;
+    margin-top:50px;
+    font-size:0.68rem;
     letter-spacing:3px;
-    opacity:0.5;
+    opacity:0.45;
 }
 
-@keyframes loadingBar{
-    0%{
-        left:-40%;
-    }
-    100%{
-        left:100%;
-    }
+#loader-theme-toggle{
+    margin-top:30px;
+    padding:12px 24px;
+    border:1px solid var(--border);
+    background:var(--glass);
+    color:var(--text);
+    backdrop-filter:blur(12px);
+    cursor:pointer;
+    letter-spacing:2px;
+    font-size:0.7rem;
+    transition:0.4s ease;
 }
 
-@keyframes pulse{
-    0%{
-        transform:scale(1);
-        opacity:0.8;
-    }
-    50%{
-        transform:scale(1.04);
-        opacity:1;
-    }
-    100%{
-        transform:scale(1);
-        opacity:0.8;
-    }
-}
-
-@keyframes loaderFade{
-    to{
-        opacity:0;
-        visibility:hidden;
-        pointer-events:none;
-    }
+#loader-theme-toggle:hover{
+    transform:translateY(-3px);
+    background:var(--text);
+    color:white;
 }
 
 /* =========================
-BACKGROUND
+BACKGROUND GLOWS
 ========================= */
 
 body::before{
@@ -166,18 +174,6 @@ body::after{
     left:-150px;
     z-index:-1;
     animation:glowMove2 10s ease-in-out infinite;
-}
-
-@keyframes glowMove{
-    0%{transform:translateY(0px);}
-    50%{transform:translateY(40px);}
-    100%{transform:translateY(0px);}
-}
-
-@keyframes glowMove2{
-    0%{transform:translateX(0px);}
-    50%{transform:translateX(30px);}
-    100%{transform:translateX(0px);}
 }
 
 /* =========================
@@ -240,28 +236,6 @@ nav ul li a:hover::after{
 }
 
 /* =========================
-DEVICE INDICATOR
-========================= */
-
-.device-indicator{
-    position:absolute;
-    left:25px;
-    top:50%;
-    transform:translateY(-50%);
-    font-size:0.4rem;
-    letter-spacing:2px;
-    padding:10px 18px;
-    border:1px solid var(--border);
-    background:var(--glass);
-    backdrop-filter:blur(10px);
-    border-radius:80px;
-    color:var(--text);
-    display:flex;
-    align-items:center;
-    gap:8px;
-}
-
-/* =========================
 THEME BUTTON
 ========================= */
 
@@ -304,12 +278,6 @@ HERO
     width:220px;
     margin-bottom:40px;
     animation:floatLogo 6s ease-in-out infinite;
-}
-
-@keyframes floatLogo{
-    0%{transform:translateY(0px);}
-    50%{transform:translateY(-14px);}
-    100%{transform:translateY(0px);}
 }
 
 .hero h1{
@@ -373,21 +341,52 @@ SECTION
     margin-bottom:15px;
 }
 
-/* =========================
-CARDS
-========================= */
-
-.products-grid,
-.contact-grid,
-.stats{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
+.section-title p{
+    letter-spacing:3px;
+    font-size:0.8rem;
+    opacity:0.7;
 }
 
-.card,
-.stat-box,
-.contact-card{
+/* =========================
+STATS
+========================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.stat-box{
+    background:var(--card);
+    border:1px solid var(--border);
+    backdrop-filter:blur(14px);
+    padding:40px;
+    text-align:center;
+    transition:0.4s;
+}
+
+.stat-box:hover{
+    transform:translateY(-10px);
+}
+
+.stat-box h2{
+    font-family:'Cormorant Garamond', serif;
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+/* =========================
+PRODUCTS
+========================= */
+
+.products-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:35px;
+}
+
+.card{
     background:var(--card);
     border:1px solid var(--border);
     backdrop-filter:blur(14px);
@@ -397,14 +396,11 @@ CARDS
     overflow:hidden;
 }
 
-.card:hover,
-.stat-box:hover,
-.contact-card:hover{
+.card:hover{
     transform:translateY(-10px);
 }
 
-.card::before,
-.contact-card::before{
+.card::before{
     content:'';
     position:absolute;
     width:100%;
@@ -420,22 +416,81 @@ CARDS
     transition:0.8s;
 }
 
-.card:hover::before,
-.contact-card:hover::before{
+.card:hover::before{
     left:100%;
 }
 
-.card h3,
-.contact-card h3{
+.card h3{
     font-family:'Cormorant Garamond', serif;
     font-size:2rem;
     margin-bottom:15px;
 }
 
-.card p,
-.contact-card p{
+.card p{
     line-height:1.8;
-    opacity:0.8;
+}
+
+/* =========================
+PRICE LIST
+========================= */
+
+.price-list{
+    display:grid;
+    gap:25px;
+}
+
+.price-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:30px;
+    background:var(--card);
+    border:1px solid var(--border);
+    backdrop-filter:blur(14px);
+    transition:0.4s;
+}
+
+.price-row:hover{
+    transform:translateX(8px);
+}
+
+.price-row h3{
+    font-family:'Cormorant Garamond', serif;
+    font-size:2rem;
+}
+
+/* =========================
+ANNOUNCEMENTS
+========================= */
+
+.announcement-box{
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:60px;
+    text-align:center;
+    backdrop-filter:blur(14px);
+    position:relative;
+    overflow:hidden;
+}
+
+.announcement-box::before{
+    content:'';
+    position:absolute;
+    width:200%;
+    height:200%;
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.12),
+        transparent
+    );
+    animation:announcementShine 8s linear infinite;
+}
+
+.announcement-box h3{
+    font-family:'Cormorant Garamond', serif;
+    font-size:3rem;
+    margin-bottom:20px;
 }
 
 /* =========================
@@ -457,6 +512,34 @@ ABOUT
 
 .about-box p{
     line-height:2;
+}
+
+/* =========================
+CONTACT
+========================= */
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+.contact-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    backdrop-filter:blur(14px);
+    padding:40px;
+    transition:0.4s;
+}
+
+.contact-card:hover{
+    transform:translateY(-10px);
+}
+
+.contact-card h3{
+    font-family:'Cormorant Garamond', serif;
+    font-size:2rem;
+    margin-bottom:15px;
 }
 
 /* =========================
@@ -484,6 +567,22 @@ REVEAL
     transform:translateY(0);
 }
 
+/* =========================
+ANIMATIONS
+========================= */
+
+@keyframes glowMove{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(40px);}
+    100%{transform:translateY(0px);}
+}
+
+@keyframes glowMove2{
+    0%{transform:translateX(0px);}
+    50%{transform:translateX(30px);}
+    100%{transform:translateX(0px);}
+}
+
 @keyframes fadeUp{
     from{
         opacity:0;
@@ -492,6 +591,43 @@ REVEAL
     to{
         opacity:1;
         transform:translateY(0);
+    }
+}
+
+@keyframes floatLogo{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-14px);}
+    100%{transform:translateY(0px);}
+}
+
+@keyframes loadingBar{
+    0%{left:-40%;}
+    100%{left:100%;}
+}
+
+@keyframes pulse{
+    0%{transform:scale(1);opacity:0.8;}
+    50%{transform:scale(1.04);opacity:1;}
+    100%{transform:scale(1);opacity:0.8;}
+}
+
+@keyframes loaderEntrance{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes announcementShine{
+    0%{
+        transform:translateX(-100%) rotate(25deg);
+    }
+    100%{
+        transform:translateX(100%) rotate(25deg);
     }
 }
 
@@ -505,14 +641,6 @@ MOBILE
         flex-direction:column;
         gap:18px;
         padding:18px 5%;
-    }
-
-    .device-indicator{
-        position:relative;
-        left:auto;
-        top:auto;
-        transform:none;
-        margin-bottom:10px;
     }
 
     .nav-right{
@@ -549,6 +677,12 @@ MOBILE
         font-size:2.5rem;
     }
 
+    .price-row{
+        flex-direction:column;
+        gap:15px;
+        text-align:center;
+    }
+
 }
 
 </style>
@@ -561,7 +695,11 @@ MOBILE
 LOADER
 ========================= -->
 
-<div class="loader">
+<div class="loader" id="loader">
+
+<div class="loader-content">
+
+<img src="logo.png" class="loader-logo-img" alt="ZERINAÉ Logo">
 
 <div class="loader-logo">
 ZERINAÉ
@@ -573,8 +711,14 @@ ZERINAÉ
 ENTERING THE MAISON
 </div>
 
+<button id="loader-theme-toggle">
+DARK MODE
+</button>
+
 <div class="loader-credit">
 PRODUCED BY HYA INDUSTRIES
+</div>
+
 </div>
 
 </div>
@@ -585,10 +729,6 @@ NAVBAR
 
 <nav>
 
-<div class="device-indicator" id="deviceIndicator">
-💻 DESKTOP
-</div>
-
 <div class="logo">
 ZERINAÉ
 </div>
@@ -597,6 +737,8 @@ ZERINAÉ
 
 <ul>
 <li><a href="#products">PRODUCTS</a></li>
+<li><a href="#prices">PRICES</a></li>
+<li><a href="#announcements">NEWS</a></li>
 <li><a href="#about">ABOUT</a></li>
 <li><a href="#contact">CONTACT</a></li>
 </ul>
@@ -647,7 +789,9 @@ PRIVATE ATELIER
 STATS
 ========================= -->
 
-<section class="stats section reveal">
+<section class="section reveal">
+
+<div class="stats">
 
 <div class="stat-box">
 <h2>2026</h2>
@@ -662,6 +806,8 @@ STATS
 <div class="stat-box">
 <h2>WIP</h2>
 <p>UPCOMING COLLECTIONS</p>
+</div>
+
 </div>
 
 </section>
@@ -706,6 +852,82 @@ PRIVATE PREVIEW COLLECTIONS
 <br>
 <p>$1,950</p>
 </div>
+
+</div>
+
+</section>
+
+<!-- =========================
+PRICE LIST
+========================= -->
+
+<section class="section reveal" id="prices">
+
+<div class="section-title">
+
+<h2>
+Price List
+</h2>
+
+<p>
+ESTIMATED LUXURY PRICING
+</p>
+
+</div>
+
+<div class="price-list">
+
+<div class="price-row">
+<h3>Luxury Rings</h3>
+<p>$1,500 — $8,000</p>
+</div>
+
+<div class="price-row">
+<h3>Diamond Necklaces</h3>
+<p>$3,000 — $18,000</p>
+</div>
+
+<div class="price-row">
+<h3>Bracelets</h3>
+<p>$950 — $6,500</p>
+</div>
+
+<div class="price-row">
+<h3>Private Editions</h3>
+<p>Custom Pricing</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+ANNOUNCEMENTS
+========================= -->
+
+<section class="section reveal" id="announcements">
+
+<div class="section-title">
+
+<h2>
+Announcements
+</h2>
+
+<p>
+LATEST HOUSE NEWS · PRIVATE RELEASES
+</p>
+
+</div>
+
+<div class="announcement-box">
+
+<h3>
+NEW COLLECTION COMING SOON
+</h3>
+
+<p>
+NOT EDITABLE YET — FUTURE CMS / PANEL PLACEHOLDER
+</p>
 
 </div>
 
@@ -803,6 +1025,22 @@ PRIVATE INQUIRIES · PRESS · APPOINTMENTS
 <script>
 
 /* =========================
+LOADER
+========================= */
+
+const loader = document.getElementById('loader');
+
+window.addEventListener('load', () => {
+
+    setTimeout(() => {
+
+        loader.classList.add('hidden');
+
+    }, 4000);
+
+});
+
+/* =========================
 REVEAL
 ========================= */
 
@@ -828,30 +1066,28 @@ DARK MODE
 ========================= */
 
 const toggleButton = document.getElementById('theme-toggle');
+const loaderThemeButton = document.getElementById('loader-theme-toggle');
 
-toggleButton.addEventListener('click', () => {
+function toggleDarkMode(){
 
     document.body.classList.toggle('dark-mode');
 
     if(document.body.classList.contains('dark-mode')){
+
         toggleButton.innerText = 'LIGHT MODE';
+        loaderThemeButton.innerText = 'LIGHT MODE';
+
     } else {
+
         toggleButton.innerText = 'DARK MODE';
+        loaderThemeButton.innerText = 'DARK MODE';
+
     }
 
-});
-
-/* =========================
-DEVICE DETECTION
-========================= */
-
-const deviceIndicator = document.getElementById('deviceIndicator');
-
-if(window.innerWidth <= 768){
-    deviceIndicator.innerHTML = '📱 MOBILE';
-} else {
-    deviceIndicator.innerHTML = '💻 DESKTOP';
 }
+
+toggleButton.addEventListener('click', toggleDarkMode);
+loaderThemeButton.addEventListener('click', toggleDarkMode);
 
 </script>
 
