@@ -922,11 +922,11 @@ LATEST HOUSE NEWS · PRIVATE RELEASES
 <div class="announcement-box">
 
 <h3>
-NEW COLLECTION COMING SOON
+WEBSITE RELEASE
 </h3>
 
 <p>
-NOT EDITABLE YET — FUTURE CMS / PANEL PLACEHOLDER
+NOT EDITABLE YET — FUTURE CMS / PANEL PLACEHOLDER 
 </p>
 
 </div>
@@ -1062,11 +1062,24 @@ window.addEventListener('scroll', () => {
 });
 
 /* =========================
-DARK MODE
+DARK MODE WITH SAVE
 ========================= */
 
 const toggleButton = document.getElementById('theme-toggle');
 const loaderThemeButton = document.getElementById('loader-theme-toggle');
+
+/* LOAD SAVED THEME */
+
+if(localStorage.getItem('theme') === 'dark'){
+
+    document.body.classList.add('dark-mode');
+
+    toggleButton.innerText = 'LIGHT MODE';
+    loaderThemeButton.innerText = 'LIGHT MODE';
+
+}
+
+/* TOGGLE FUNCTION */
 
 function toggleDarkMode(){
 
@@ -1074,10 +1087,14 @@ function toggleDarkMode(){
 
     if(document.body.classList.contains('dark-mode')){
 
+        localStorage.setItem('theme', 'dark');
+
         toggleButton.innerText = 'LIGHT MODE';
         loaderThemeButton.innerText = 'LIGHT MODE';
 
     } else {
+
+        localStorage.setItem('theme', 'light');
 
         toggleButton.innerText = 'DARK MODE';
         loaderThemeButton.innerText = 'DARK MODE';
@@ -1086,6 +1103,8 @@ function toggleDarkMode(){
 
 }
 
+toggleButton.addEventListener('click', toggleDarkMode);
+loaderThemeButton.addEventListener('click', toggleDarkMode);
 toggleButton.addEventListener('click', toggleDarkMode);
 loaderThemeButton.addEventListener('click', toggleDarkMode);
 
