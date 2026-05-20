@@ -1,69 +1,929 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ZERINAÉ | Luxury Jewelry</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+<title>ZERINAÉ — Luxury Jewelry House</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#dfe7ed;
+    color:#c7ac7c;
+    font-family:'Inter', sans-serif;
+    overflow-x:hidden;
+    position:relative;
+}
+
+/* =========================
+BACKGROUND GLOW
+========================= */
+
+body::before{
+    content:'';
+    position:fixed;
+    width:700px;
+    height:700px;
+    background:radial-gradient(circle, rgba(199,172,124,0.12), transparent 70%);
+    top:-250px;
+    right:-200px;
+    z-index:-1;
+    animation:glowMove 8s ease-in-out infinite;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle, rgba(199,172,124,0.10), transparent 70%);
+    bottom:-200px;
+    left:-150px;
+    z-index:-1;
+    animation:glowMove2 10s ease-in-out infinite;
+}
+
+@keyframes glowMove{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(40px);}
+    100%{transform:translateY(0px);}
+}
+
+@keyframes glowMove2{
+    0%{transform:translateX(0px);}
+    50%{transform:translateX(30px);}
+    100%{transform:translateX(0px);}
+}
+
+/* =========================
+NAVBAR
+========================= */
+
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:999;
+    padding:25px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    backdrop-filter:blur(14px);
+    background:rgba(223,231,237,0.5);
+    border-bottom:1px solid rgba(199,172,124,0.15);
+}
+
+.logo{
+    font-family:'Cormorant Garamond', serif;
+    font-size:2rem;
+    letter-spacing:5px;
+    font-weight:600;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:35px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:#b99e6b;
+    letter-spacing:2px;
+    font-size:0.75rem;
+    position:relative;
+    transition:0.3s;
+}
+
+nav ul li a::after{
+    content:'';
+    position:absolute;
+    width:0%;
+    height:1px;
+    background:#c7ac7c;
+    left:0;
+    bottom:-6px;
+    transition:0.4s;
+}
+
+nav ul li a:hover::after{
+    width:100%;
+}
+
+/* =========================
+HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:180px 20px 100px;
+    position:relative;
+}
+
+.hero-content{
+    max-width:1000px;
+    animation:fadeUp 1.2s ease;
+}
+
+.hero img{
+    width:220px;
+    margin-bottom:40px;
+    animation:floatLogo 6s ease-in-out infinite;
+    filter:drop-shadow(0 20px 40px rgba(0,0,0,0.08));
+}
+
+@keyframes floatLogo{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-14px);}
+    100%{transform:translateY(0px);}
+}
+
+.hero h1{
+    font-family:'Cormorant Garamond', serif;
+    font-size:7rem;
+    letter-spacing:10px;
+    margin-bottom:15px;
+    animation:fadeUp 1s ease;
+}
+
+.hero p{
+    letter-spacing:5px;
+    font-size:0.9rem;
+    margin-bottom:45px;
+    opacity:0.85;
+    animation:fadeUp 1.4s ease;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:16px 40px;
+    border:none;
+    background:#c7ac7c;
+    color:white;
+    cursor:pointer;
+    letter-spacing:2px;
+    transition:0.4s ease;
+    font-size:0.75rem;
+}
+
+.btn:hover{
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:0 10px 30px rgba(199,172,124,0.35);
+}
+
+.btn-outline{
+    background:transparent;
+    border:1px solid #c7ac7c;
+    color:#c7ac7c;
+}
+
+/* =========================
+STATS
+========================= */
+
+.stats{
+    padding:0 7%;
+    margin-top:-70px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.stat-box{
+    background:rgba(255,255,255,0.28);
+    backdrop-filter:blur(14px);
+    border:1px solid rgba(199,172,124,0.15);
+    padding:40px;
+    text-align:center;
+    transition:0.4s;
+    animation:fadeUp 1.4s ease;
+}
+
+.stat-box:hover{
+    transform:translateY(-8px);
+}
+
+.stat-box h2{
+    font-family:'Cormorant Garamond', serif;
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+.stat-box p{
+    font-size:0.75rem;
+    letter-spacing:2px;
+}
+
+/* =========================
+SECTION
+========================= */
+
+.section{
+    padding:140px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-title h2{
+    font-family:'Cormorant Garamond', serif;
+    font-size:4rem;
+    letter-spacing:4px;
+    margin-bottom:15px;
+}
+
+.section-title p{
+    letter-spacing:3px;
+    font-size:0.8rem;
+    opacity:0.7;
+}
+
+/* =========================
+COLLECTIONS
+========================= */
+
+.collection-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:35px;
+}
+
+.collection-card{
+    background:rgba(255,255,255,0.28);
+    border:1px solid rgba(199,172,124,0.15);
+    backdrop-filter:blur(16px);
+    overflow:hidden;
+    transition:0.5s;
+    position:relative;
+}
+
+.collection-card:hover{
+    transform:translateY(-10px);
+}
+
+.collection-card::before{
+    content:'';
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.25),
+        transparent
+    );
+    top:0;
+    left:-100%;
+    transition:0.8s;
+}
+
+.collection-card:hover::before{
+    left:100%;
+}
+
+.card-image{
+    height:280px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(
+        135deg,
+        rgba(199,172,124,0.18),
+        rgba(255,255,255,0.05)
+    );
+    font-family:'Cormorant Garamond', serif;
+    font-size:2.7rem;
+    letter-spacing:4px;
+}
+
+.card-content{
+    padding:35px;
+}
+
+.card-content h3{
+    font-family:'Cormorant Garamond', serif;
+    font-size:2.2rem;
+    margin-bottom:14px;
+}
+
+.card-content p{
+    line-height:1.9;
+    opacity:0.8;
+    margin-bottom:22px;
+}
+
+.price{
+    letter-spacing:2px;
+}
+
+/* =========================
+LUXURY BANNER
+========================= */
+
+.banner{
+    margin:100px 0;
+    padding:120px 7%;
+    text-align:center;
+    border-top:1px solid rgba(199,172,124,0.15);
+    border-bottom:1px solid rgba(199,172,124,0.15);
+    position:relative;
+}
+
+.banner h2{
+    font-family:'Cormorant Garamond', serif;
+    font-size:4rem;
+    max-width:900px;
+    margin:auto;
+    line-height:1.2;
+}
+
+.banner p{
+    margin-top:30px;
+    letter-spacing:3px;
+    opacity:0.7;
+}
+
+/* =========================
+ABOUT
+========================= */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+.about-box{
+    background:rgba(255,255,255,0.25);
+    border:1px solid rgba(199,172,124,0.15);
+    padding:50px;
+    backdrop-filter:blur(14px);
+}
+
+.about-box h3{
+    font-family:'Cormorant Garamond', serif;
+    font-size:3rem;
+    margin-bottom:25px;
+}
+
+.about-box p{
+    line-height:2;
+    opacity:0.82;
+}
+
+.placeholder-art{
+    min-height:450px;
+    background:linear-gradient(
+        145deg,
+        rgba(199,172,124,0.18),
+        rgba(255,255,255,0.08)
+    );
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Cormorant Garamond', serif;
+    font-size:2.5rem;
+    letter-spacing:6px;
+    position:relative;
+    overflow:hidden;
+}
+
+.placeholder-art::after{
+    content:'';
+    position:absolute;
+    width:200%;
+    height:200%;
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.18),
+        transparent
+    );
+    animation:shine 6s linear infinite;
+}
+
+@keyframes shine{
+    0%{transform:translateX(-100%) rotate(25deg);}
+    100%{transform:translateX(100%) rotate(25deg);}
+}
+
+/* =========================
+CONTACT
+========================= */
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+.contact-card{
+    padding:40px;
+    background:rgba(255,255,255,0.25);
+    border:1px solid rgba(199,172,124,0.15);
+    backdrop-filter:blur(14px);
+    transition:0.4s;
+}
+
+.contact-card:hover{
+    transform:translateY(-8px);
+}
+
+.contact-card h3{
+    font-family:'Cormorant Garamond', serif;
+    font-size:2rem;
+    margin-bottom:18px;
+}
+
+.contact-card p{
+    line-height:1.9;
+    opacity:0.8;
+}
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+    padding:50px 7%;
+    border-top:1px solid rgba(199,172,124,0.15);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.footer-left h3{
+    font-family:'Cormorant Garamond', serif;
+    font-size:2rem;
+    letter-spacing:4px;
+    margin-bottom:12px;
+}
+
+.footer-left p,
+.footer-right p{
+    opacity:0.7;
+    line-height:1.8;
+}
+
+/* =========================
+ANIMATIONS
+========================= */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+SCROLL REVEAL
+========================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(60px);
+    transition:1s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:900px){
+
+    .hero h1{
+        font-size:4rem;
     }
 
-    body{
-      background:#dce4ea;
-      color:#c5ab7d;
-      font-family:'Inter', sans-serif;
-      overflow-x:hidden;
+    .about-grid{
+        grid-template-columns:1fr;
     }
 
-    ::selection{
-      background:#c5ab7d;
-      color:white;
+    .section-title h2{
+        font-size:3rem;
     }
+
+    .banner h2{
+        font-size:2.8rem;
+    }
+
+}
+
+@media(max-width:768px){
 
     nav{
-      width:100%;
-      padding:30px 8%;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      position:fixed;
-      top:0;
-      z-index:1000;
-      backdrop-filter:blur(10px);
-      background:rgba(220,228,234,0.45);
-      border-bottom:1px solid rgba(197,171,125,0.15);
-    }
-
-    .logo{
-      font-family:'Cormorant Garamond', serif;
-      font-size:2rem;
-      letter-spacing:4px;
-      font-weight:600;
+        flex-direction:column;
+        gap:18px;
+        padding:18px 5%;
     }
 
     nav ul{
-      display:flex;
-      gap:40px;
-      list-style:none;
+        gap:16px;
+        flex-wrap:wrap;
+        justify-content:center;
     }
 
-    nav ul li a{
-      text-decoration:none;
-      color:#b89b69;
-      font-size:0.9rem;
-      letter-spacing:2px;
-      transition:0.3s ease;
+    .logo{
+        font-size:1.7rem;
     }
 
-    nav ul li a:hover{
+    .hero{
+        padding-top:220px;
+    }
+
+    .hero img{
+        width:150px;
+    }
+
+    .hero h1{
+        font-size:2.7rem;
+        letter-spacing:4px;
+    }
+
+    .hero p{
+        font-size:0.72rem;
+        letter-spacing:2px;
+        line-height:1.8;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .btn{
+        width:100%;
+        max-width:280px;
+    }
+
+    .section{
+        padding:100px 5%;
+    }
+
+    .collection-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+        padding:0 5%;
+    }
+
+    .banner{
+        padding:90px 5%;
+    }
+
+    .banner h2{
+        font-size:2rem;
+    }
+
+    footer{
+        flex-direction:column;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================
+NAVBAR
+========================= -->
+
+<nav>
+
+<div class="logo">ZERINAÉ</div>
+
+<ul>
+<li><a href="#collections">COLLECTIONS</a></li>
+<li><a href="#atelier">ATELIER</a></li>
+<li><a href="#contact">CONTACT</a></li>
+</ul>
+
+</nav>
+
+<!-- =========================
+HERO
+========================= -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<img src="logo.png" alt="ZERINAÉ Logo">
+
+<h1>ZERINAÉ</h1>
+
+<p>THE FUTURE OF MODERN LUXURY JEWELRY — EST. 2026</p>
+
+<div class="hero-buttons">
+<button class="btn">COMING SOON</button>
+<button class="btn btn-outline">PRIVATE ATELIER</button>
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+STATS
+========================= -->
+
+<section class="stats">
+
+<div class="stat-box">
+<h2>2026</h2>
+<p>FOUNDED</p>
+</div>
+
+<div class="stat-box">
+<h2>∞</h2>
+<p>LUXURY EVOLUTION</p>
+</div>
+
+<div class="stat-box">
+<h2>WIP</h2>
+<p>UPCOMING COLLECTIONS</p>
+</div>
+
+<div class="stat-box">
+<h2>SGZ</h2>
+<p>CEO SELIN GERON ZENGIN</p>
+</div>
+
+</section>
+
+<!-- =========================
+COLLECTIONS
+========================= -->
+
+<section class="section reveal" id="collections">
+
+<div class="section-title">
+<h2>Future Collections</h2>
+<p>PRIVATE RELEASES · WIP · COMING SOON</p>
+</div>
+
+<div class="collection-grid">
+
+<div class="collection-card">
+
+<div class="card-image">
+CELESTE
+</div>
+
+<div class="card-content">
+
+<h3>Celeste</h3>
+
+<p>
+WIP — Inspired by celestial elegance and diamond reflections.
+</p>
+
+<div class="price">$1,800 — $12,000</div>
+
+</div>
+
+</div>
+
+<div class="collection-card">
+
+<div class="card-image">
+ÉTOILE
+</div>
+
+<div class="card-content">
+
+<h3>Étoile</h3>
+
+<p>
+Not added yet — Luxury couture jewelry collection.
+</p>
+
+<div class="price">$3,200 — $18,500</div>
+
+</div>
+
+</div>
+
+<div class="collection-card">
+
+<div class="card-image">
+LUNAIRE
+</div>
+
+<div class="card-content">
+
+<h3>Lunaire</h3>
+
+<p>
+WIP — Soft silver tones and handcrafted modern elegance.
+</p>
+
+<div class="price">$950 — $8,000</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+BANNER
+========================= -->
+
+<section class="banner reveal">
+
+<h2>
+Crafted for timeless elegance and the future of luxury.
+</h2>
+
+<p>
+ZERINAÉ · PARIS · MILANO · ISTANBUL
+</p>
+
+</section>
+
+<!-- =========================
+ABOUT
+========================= -->
+
+<section class="section reveal" id="atelier">
+
+<div class="section-title">
+<h2>Maison</h2>
+<p>THE HOUSE OF ZERINAÉ</p>
+</div>
+
+<div class="about-grid">
+
+<div class="about-box">
+
+<h3>About</h3>
+
+<p>
+ZERINAÉ is a luxury jewelry house focused on refined aesthetics,
+timeless silhouettes, and modern couture craftsmanship.
+<br><br>
+Every future piece is designed around elegance, exclusivity,
+and elevated minimalism.
+<br><br>
+CEO — a fat girl
+</p>
+
+</div>
+
+<div class="placeholder-art">
+PRIVATE ATELIER
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+CONTACT
+========================= -->
+
+<section class="section reveal" id="contact">
+
+<div class="section-title">
+<h2>Contact</h2>
+<p>PRIVATE INQUIRIES · APPOINTMENTS · PRESS</p>
+</div>
+
+<div class="contact-grid">
+
+<div class="contact-card">
+
+<h3>Email</h3>
+
+<p>
+contact@zerinae.com
+</p>
+
+</div>
+
+<div class="contact-card">
+
+<h3>Instagram</h3>
+
+<p>
+@zerinae
+</p>
+
+</div>
+
+<div class="contact-card">
+
+<h3>Appointments</h3>
+
+<p>
+Not added yet
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+FOOTER
+========================= -->
+
+<footer>
+
+<div class="footer-left">
+
+<h3>ZERINAÉ</h3>
+
+<p>
+Luxury Jewelry House — Est. 2026
+</p>
+
+</div>
+
+<div class="footer-right">
+
+<p>
+© 2026 ZERINAÉ — All Rights Reserved
+</p>
+
+</div>
+
+</footer>
+
+<!-- =========================
+SCROLL REVEAL JS
+========================= -->
+
+<script>
+
+const reveals = document.querySelectorAll('.reveal');
+
+window.addEventListener('scroll', () => {
+
+    reveals.forEach((element) => {
+
+        const windowHeight = window.innerHeight;
+        const revealTop = element.getBoundingClientRect().top;
+        const revealPoint = 120;
+
+        if(revealTop < windowHeight - revealPoint){
+            element.classList.add('active');
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>    nav ul li a:hover{
       opacity:0.6;
     }
 
@@ -334,6 +1194,9 @@
 
   <footer>
     © 2025 ZERINAÉ — All Rights Reserved
+
+
+    Developed and Produced by Hya Industries Development in Web and Other Projects
   </footer>
 
 </body>
