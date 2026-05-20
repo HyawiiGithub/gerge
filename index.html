@@ -1,3 +1,8 @@
+```html id="yx3n9a"
+<!-- =========================
+index.html
+========================= -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +20,7 @@
 <style>
 
 /* =========================
-ROOT COLORS
+ROOT
 ========================= */
 
 :root{
@@ -48,12 +53,12 @@ body{
     color:var(--text);
     font-family:'Inter', sans-serif;
     overflow-x:hidden;
-    transition:0.45s ease;
+    transition:0.4s;
     position:relative;
 }
 
 /* =========================
-LOADING SCREEN
+LOADER
 ========================= */
 
 .loader{
@@ -63,6 +68,669 @@ LOADING SCREEN
     z-index:999999;
     display:flex;
     justify-content:center;
+    align-items:center;
+    transition:1s ease;
+}
+
+.loader.hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+.loader-content{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.loader-logo{
+    width:140px;
+    margin-bottom:30px;
+    animation:floatLogo 4s ease-in-out infinite;
+}
+
+.loader-title{
+    font-family:'Cormorant Garamond', serif;
+    font-size:5rem;
+    letter-spacing:10px;
+    margin-bottom:20px;
+}
+
+.loader-line{
+    width:240px;
+    height:2px;
+    background:rgba(255,255,255,0.08);
+    overflow:hidden;
+    position:relative;
+}
+
+.loader-line::after{
+    content:'';
+    position:absolute;
+    width:40%;
+    height:100%;
+    background:var(--text);
+    animation:loadingBar 2.5s ease infinite;
+}
+
+.loader-text{
+    margin-top:25px;
+    font-size:0.75rem;
+    letter-spacing:4px;
+    opacity:0.7;
+}
+
+#loader-theme-toggle{
+    margin-top:30px;
+    padding:12px 24px;
+    border:1px solid var(--border);
+    background:var(--glass);
+    color:var(--text);
+    cursor:pointer;
+    transition:0.4s;
+}
+
+.loader-credit{
+    margin-top:40px;
+    opacity:0.4;
+    font-size:0.7rem;
+    letter-spacing:3px;
+}
+
+/* =========================
+BACKGROUND
+========================= */
+
+body::before{
+    content:'';
+    position:fixed;
+    width:700px;
+    height:700px;
+    background:radial-gradient(circle, var(--heroGlow), transparent 70%);
+    top:-250px;
+    right:-200px;
+    z-index:-1;
+    animation:glowMove 8s ease-in-out infinite;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle, var(--heroGlow), transparent 70%);
+    bottom:-200px;
+    left:-150px;
+    z-index:-1;
+    animation:glowMove2 10s ease-in-out infinite;
+}
+
+/* =========================
+NAVBAR
+========================= */
+
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:999;
+    padding:24px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    backdrop-filter:blur(18px);
+    background:rgba(255,255,255,0.08);
+    border-bottom:1px solid var(--border);
+}
+
+.logo{
+    font-family:'Cormorant Garamond', serif;
+    font-size:2rem;
+    letter-spacing:5px;
+}
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:var(--text);
+    letter-spacing:2px;
+    font-size:0.72rem;
+}
+
+#theme-toggle{
+    padding:12px 20px;
+    border:1px solid var(--border);
+    background:var(--glass);
+    color:var(--text);
+    cursor:pointer;
+}
+
+/* =========================
+HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:180px 20px 100px;
+}
+
+.hero-content{
+    max-width:1000px;
+}
+
+.hero img{
+    width:220px;
+    margin-bottom:40px;
+    animation:floatLogo 6s ease-in-out infinite;
+}
+
+.hero h1{
+    font-family:'Cormorant Garamond', serif;
+    font-size:7rem;
+    letter-spacing:10px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    letter-spacing:5px;
+    font-size:0.9rem;
+    margin-bottom:45px;
+    opacity:0.85;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:16px 40px;
+    border:none;
+    background:var(--text);
+    color:white;
+    cursor:pointer;
+    letter-spacing:2px;
+    transition:0.4s ease;
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+}
+
+.btn-outline{
+    background:transparent;
+    border:1px solid var(--text);
+    color:var(--text);
+}
+
+/* =========================
+SECTIONS
+========================= */
+
+.section{
+    padding:120px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-title h2{
+    font-family:'Cormorant Garamond', serif;
+    font-size:4rem;
+    margin-bottom:15px;
+}
+
+.section-title p{
+    letter-spacing:3px;
+    opacity:0.7;
+}
+
+/* =========================
+STATS
+========================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.stat-box{
+    background:var(--card);
+    border:1px solid var(--border);
+    backdrop-filter:blur(14px);
+    padding:40px;
+    text-align:center;
+    transition:0.4s;
+}
+
+.stat-box:hover{
+    transform:translateY(-10px);
+}
+
+.stat-box h2{
+    font-family:'Cormorant Garamond', serif;
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+/* =========================
+ANNOUNCEMENTS
+========================= */
+
+.announcement-box{
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:60px;
+    text-align:center;
+    backdrop-filter:blur(14px);
+}
+
+.announcement-box h3{
+    font-family:'Cormorant Garamond', serif;
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+/* =========================
+ABOUT
+========================= */
+
+.about-box{
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:50px;
+    backdrop-filter:blur(14px);
+}
+
+.about-box h3{
+    font-family:'Cormorant Garamond', serif;
+    font-size:3rem;
+    margin-bottom:25px;
+}
+
+.about-box p{
+    line-height:2;
+}
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+    padding:50px 7%;
+    border-top:1px solid var(--border);
+    text-align:center;
+}
+
+/* =========================
+ANIMATIONS
+========================= */
+
+@keyframes glowMove{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(40px);}
+    100%{transform:translateY(0);}
+}
+
+@keyframes glowMove2{
+    0%{transform:translateX(0);}
+    50%{transform:translateX(30px);}
+    100%{transform:translateX(0);}
+}
+
+@keyframes floatLogo{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-14px);}
+    100%{transform:translateY(0);}
+}
+
+@keyframes loadingBar{
+    0%{left:-40%;}
+    100%{left:100%;}
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:768px){
+
+    nav{
+        flex-direction:column;
+        gap:18px;
+        padding:18px 5%;
+    }
+
+    .nav-right{
+        flex-direction:column;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:15px;
+    }
+
+    .hero{
+        padding-top:240px;
+    }
+
+    .hero h1{
+        font-size:3rem;
+        letter-spacing:4px;
+    }
+
+    .hero p{
+        font-size:0.72rem;
+        letter-spacing:2px;
+        line-height:1.8;
+    }
+
+    .section{
+        padding:100px 5%;
+    }
+
+    .section-title h2{
+        font-size:2.5rem;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================
+LOADER
+========================= -->
+
+<div class="loader" id="loader">
+
+<div class="loader-content">
+
+<img src="logo.png" class="loader-logo" alt="ZERINAÉ Logo">
+
+<div class="loader-title">
+ZERINAÉ
+</div>
+
+<div class="loader-line"></div>
+
+<div class="loader-text">
+ENTERING THE MAISON
+</div>
+
+<button id="loader-theme-toggle">
+DARK MODE
+</button>
+
+<div class="loader-credit">
+PRODUCED BY HYA INDUSTRIES
+</div>
+
+</div>
+
+</div>
+
+<!-- =========================
+NAVBAR
+========================= -->
+
+<nav>
+
+<div class="logo">
+ZERINAÉ
+</div>
+
+<div class="nav-right">
+
+<ul>
+<li><a href="index.html">HOME</a></li>
+<li><a href="products.html">PRODUCTS</a></li>
+<li><a href="prices.html">PRICES</a></li>
+<li><a href="contact.html">CONTACT</a></li>
+</ul>
+
+<button id="theme-toggle">
+DARK MODE
+</button>
+
+</div>
+
+</nav>
+
+<!-- =========================
+HERO
+========================= -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<img src="logo.png" alt="ZERINAÉ Logo">
+
+<h1>
+ZERINAÉ
+</h1>
+
+<p>
+THE FUTURE OF MODERN LUXURY JEWELRY — EST. 2026
+</p>
+
+<div class="hero-buttons">
+
+<button class="btn">
+COMING SOON
+</button>
+
+<button class="btn btn-outline">
+PRIVATE ATELIER
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+STATS
+========================= -->
+
+<section class="section">
+
+<div class="stats">
+
+<div class="stat-box">
+<h2>2026</h2>
+<p>FOUNDED</p>
+</div>
+
+<div class="stat-box">
+<h2>∞</h2>
+<p>LUXURY EVOLUTION</p>
+</div>
+
+<div class="stat-box">
+<h2>WIP</h2>
+<p>UPCOMING COLLECTIONS</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+ANNOUNCEMENTS
+========================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+Announcements
+</h2>
+
+<p>
+LATEST HOUSE NEWS · PRIVATE RELEASES
+</p>
+
+</div>
+
+<div class="announcement-box">
+
+<h3>
+NEW COLLECTION COMING SOON
+</h3>
+
+<p>
+NOT EDITABLE YET — FUTURE CMS / PANEL PLACEHOLDER
+</p>
+
+</div>
+
+</section>
+
+<!-- =========================
+ABOUT
+========================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+Maison
+</h2>
+
+<p>
+THE HOUSE OF ZERINAÉ
+</p>
+
+</div>
+
+<div class="about-box">
+
+<h3>
+About
+</h3>
+
+<p>
+ZERINAÉ is a future-focused luxury jewelry house centered around
+timeless elegance, couture craftsmanship, and modern luxury aesthetics.
+
+<br><br>
+
+Every collection is envisioned with exclusivity, refined materials,
+and elevated minimalism designed for the next generation of luxury.
+
+<br><br>
+
+CEO — Selin Geron Zengin
+</p>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+© 2026 ZERINAÉ — All Rights Reserved
+</p>
+
+</footer>
+
+<script>
+
+/* =========================
+LOADER
+========================= */
+
+const loader = document.getElementById('loader');
+
+window.addEventListener('load', () => {
+
+    setTimeout(() => {
+
+        loader.classList.add('hidden');
+
+    }, 4000);
+
+});
+
+/* =========================
+DARK MODE
+========================= */
+
+const toggleButton = document.getElementById('theme-toggle');
+const loaderThemeButton = document.getElementById('loader-theme-toggle');
+
+/* LOAD SAVED THEME */
+
+if(localStorage.getItem('theme') === 'dark'){
+
+    document.body.classList.add('dark-mode');
+
+    toggleButton.innerText = 'LIGHT MODE';
+    loaderThemeButton.innerText = 'LIGHT MODE';
+
+}
+
+function toggleDarkMode(){
+
+    document.body.classList.toggle('dark-mode');
+
+    if(document.body.classList.contains('dark-mode')){
+
+        localStorage.setItem('theme', 'dark');
+
+        toggleButton.innerText = 'LIGHT MODE';
+        loaderThemeButton.innerText = 'LIGHT MODE';
+
+    } else {
+
+        localStorage.setItem('theme', 'light');
+
+        toggleButton.innerText = 'DARK MODE';
+        loaderThemeButton.innerText = 'DARK MODE';
+
+    }
+
+}
+
+toggleButton.addEventListener('click', toggleDarkMode);
+loaderThemeButton.addEventListener('click', toggleDarkMode);
+
+</script>
+
+</body>
+</html>
+```
     align-items:center;
     overflow:hidden;
     transition:1s ease;
