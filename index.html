@@ -257,6 +257,25 @@ THEME BUTTON
 }
 
 /* =========================
+LANGUAGE SELECT
+========================= */
+
+#lang-select{
+    padding:12px 14px;
+    border:1px solid var(--border);
+    background:var(--glass);
+    color:var(--text);
+    cursor:pointer;
+    letter-spacing:2px;
+    font-size:0.7rem;
+    transition:0.4s ease;
+}
+
+#lang-select:hover{
+    transform:translateY(-3px);
+}
+
+/* =========================
 HERO
 ========================= */
 
@@ -701,21 +720,21 @@ LOADER
 
 <img src="logo.png" class="loader-logo-img" alt="ZERINAÉ Logo">
 
-<div class="loader-logo">
+<div class="loader-logo" data-i18n="brand">
 ZERINAÉ
 </div>
 
 <div class="loader-line"></div>
 
-<div class="loader-text">
+<div class="loader-text" data-i18n="entering_maison">
 ENTERING THE MAISON
 </div>
 
-<button id="loader-theme-toggle">
+<button id="loader-theme-toggle" data-i18n="dark_mode">
 DARK MODE
 </button>
 
-<div class="loader-credit">
+<div class="loader-credit" data-i18n="produced_by">
 PRODUCED BY VELTARA CAPITAL DEVELOPMENT TEAM
 </div>
 
@@ -729,21 +748,30 @@ NAVBAR
 
 <nav>
 
-<div class="logo">
+<div class="logo" data-i18n="brand">
 ZERINAÉ
 </div>
 
 <div class="nav-right">
 
 <ul>
-<li><a href="#products">PRODUCTS</a></li>
-<li><a href="#prices">PRICES</a></li>
-<li><a href="#announcements">NEWS</a></li>
-<li><a href="#about">ABOUT</a></li>
-<li><a href="#contact">CONTACT</a></li>
+<li><a href="#products" data-i18n="nav_products">PRODUCTS</a></li>
+<li><a href="#prices" data-i18n="nav_prices">PRICES</a></li>
+<li><a href="#announcements" data-i18n="nav_news">NEWS</a></li>
+<li><a href="#about" data-i18n="nav_about">ABOUT</a></li>
+<li><a href="#contact" data-i18n="nav_contact">CONTACT</a></li>
 </ul>
 
-<button id="theme-toggle">
+<select id="lang-select" aria-label="Language selector">
+    <option value="en">EN</option>
+    <option value="de">DE</option>
+    <option value="nl">NL</option>
+    <option value="tr">TUR</option>
+    <option value="ku">KUR - EARLY BETA</option>
+    <option value="ar">ARAB</option>
+</select>
+
+<button id="theme-toggle" data-i18n="dark_mode">
 DARK MODE
 </button>
 
@@ -761,21 +789,21 @@ HERO
 
 <img src="logo.png" alt="ZERINAÉ Logo">
 
-<h1>
+<h1 data-i18n="brand">
 ZERINAÉ
 </h1>
 
-<p>
+<p data-i18n="hero_tagline">
 THE FUTURE OF MODERN LUXURY JEWELRY — EST. 2026
 </p>
 
 <div class="hero-buttons">
 
-<button class="btn">
+<button class="btn" data-i18n="coming_soon">
 COMING SOON
 </button>
 
-<button class="btn btn-outline">
+<button class="btn btn-outline" data-i18n="private_atelier">
 PRIVATE ATELIER
 </button>
 
@@ -795,17 +823,17 @@ STATS
 
 <div class="stat-box">
 <h2>2026</h2>
-<p>FOUNDED</p>
+<p data-i18n="founded">FOUNDED</p>
 </div>
 
 <div class="stat-box">
 <h2>∞</h2>
-<p>LUXURY EVOLUTION</p>
+<p data-i18n="luxury_evolution">LUXURY EVOLUTION</p>
 </div>
 
 <div class="stat-box">
 <h2>WIP</h2>
-<p>UPCOMING COLLECTIONS</p>
+<p data-i18n="upcoming_collections">UPCOMING COLLECTIONS</p>
 </div>
 
 </div>
@@ -820,11 +848,11 @@ PRODUCTS
 
 <div class="section-title">
 
-<h2>
+<h2 data-i18n="featured_pieces">
 Featured Pieces
 </h2>
 
-<p>
+<p data-i18n="private_preview_collections">
 PRIVATE PREVIEW COLLECTIONS
 </p>
 
@@ -833,22 +861,22 @@ PRIVATE PREVIEW COLLECTIONS
 <div class="products-grid">
 
 <div class="card">
-<h3>Radiance</h3>
-<p>Diamond inspired luxury necklace concept.</p>
+<h3 data-i18n="radiance">Radiance</h3>
+<p data-i18n="radiance_desc">Diamond inspired luxury necklace concept.</p>
 <br>
 <p>$4,200</p>
 </div>
 
 <div class="card">
-<h3>Noir Ring</h3>
-<p>Minimal luxury ring collection concept.</p>
+<h3 data-i18n="noir_ring">Noir Ring</h3>
+<p data-i18n="noir_ring_desc">Minimal luxury ring collection concept.</p>
 <br>
 <p>$2,850</p>
 </div>
 
 <div class="card">
-<h3>Lumière</h3>
-<p>Elegant bracelet line with gold details.</p>
+<h3 data-i18n="lumiere">Lumière</h3>
+<p data-i18n="lumiere_desc">Elegant bracelet line with gold details.</p>
 <br>
 <p>$1,950</p>
 </div>
@@ -865,11 +893,11 @@ PRICE LIST
 
 <div class="section-title">
 
-<h2>
+<h2 data-i18n="price_list">
 Price List
 </h2>
 
-<p>
+<p data-i18n="estimated_luxury_pricing">
 ESTIMATED LUXURY PRICING
 </p>
 
@@ -878,23 +906,23 @@ ESTIMATED LUXURY PRICING
 <div class="price-list">
 
 <div class="price-row">
-<h3>Luxury Rings</h3>
+<h3 data-i18n="luxury_rings">Luxury Rings</h3>
 <p>$1,500 — $8,000</p>
 </div>
 
 <div class="price-row">
-<h3>Diamond Necklaces</h3>
+<h3 data-i18n="diamond_necklaces">Diamond Necklaces</h3>
 <p>$3,000 — $18,000</p>
 </div>
 
 <div class="price-row">
-<h3>Bracelets</h3>
+<h3 data-i18n="bracelets">Bracelets</h3>
 <p>$950 — $6,500</p>
 </div>
 
 <div class="price-row">
-<h3>Private Editions</h3>
-<p>Custom Pricing</p>
+<h3 data-i18n="private_editions">Private Editions</h3>
+<p data-i18n="custom_pricing">Custom Pricing</p>
 </div>
 
 </div>
@@ -909,11 +937,11 @@ ANNOUNCEMENTS
 
 <div class="section-title">
 
-<h2>
+<h2 data-i18n="announcements_title">
 Announcements
 </h2>
 
-<p>
+<p data-i18n="latest_news_private_releases">
 LATEST HOUSE NEWS · PRIVATE RELEASES
 </p>
 
@@ -921,11 +949,11 @@ LATEST HOUSE NEWS · PRIVATE RELEASES
 
 <div class="announcement-box">
 
-<h3>
+<h3 data-i18n="new_collection_soon">
 NEW COLLECTION COMING SOON
 </h3>
 
-<p>
+<p data-i18n="cms_placeholder">
 NOT EDITABLE YET — FUTURE CMS / PANEL PLACEHOLDER
 </p>
 
@@ -941,11 +969,11 @@ ABOUT
 
 <div class="section-title">
 
-<h2>
+<h2 data-i18n="maison">
 Maison
 </h2>
 
-<p>
+<p data-i18n="house_of_zerinae">
 THE HOUSE OF ZERINAÉ
 </p>
 
@@ -953,18 +981,16 @@ THE HOUSE OF ZERINAÉ
 
 <div class="about-box">
 
-<h3>
+<h3 data-i18n="about_title">
 About
 </h3>
 
-<p>
-ZERINAÉ is a future-focused luxury jewelry house centered around
-timeless elegance, couture craftsmanship, and modern luxury aesthetics.
+<p data-i18n="about_text">
+ZERINAÉ is a future-focused luxury jewelry house centered around timeless elegance, couture craftsmanship, and modern luxury aesthetics.
 
 <br><br>
 
-Every collection is envisioned with exclusivity, refined materials,
-and elevated minimalism designed for the next generation of luxury.
+Every collection is envisioned with exclusivity, refined materials, and elevated minimalism designed for the next generation of luxury.
 
 <br><br>
 
@@ -983,11 +1009,11 @@ CONTACT
 
 <div class="section-title">
 
-<h2>
+<h2 data-i18n="contact_title">
 Contact
 </h2>
 
-<p>
+<p data-i18n="private_inquiries">
 PRIVATE INQUIRIES · PRESS · APPOINTMENTS
 </p>
 
@@ -996,18 +1022,19 @@ PRIVATE INQUIRIES · PRESS · APPOINTMENTS
 <div class="contact-grid">
 
 <div class="contact-card">
-<h3>Email</h3>
+<h3 data-i18n="email">Email</h3>
 <p>contact@zerinae.com</p>
 </div>
 
 <div class="contact-card">
-<h3>Instagram</h3>
-<p>@zerinae</p>
+  <h3 data-i18n="instagram">Instagram</h3>
+  <p><a href="https://www.instagram.com/zerinaeee?igsh=MWgwbnhoYXN4M2twYw==" target="_blank" rel="noopener noreferrer">@ZERINAÉ</a></p>
 </div>
 
+
 <div class="contact-card">
-<h3>Appointments</h3>
-<p>NOT AVAILABLE YET</p>
+<h3 data-i18n="appointments">Appointments</h3>
+<p data-i18n="not_available_yet">NOT AVAILABLE YET</p>
 </div>
 
 </div>
@@ -1016,7 +1043,7 @@ PRIVATE INQUIRIES · PRESS · APPOINTMENTS
 
 <footer>
 
-<p>
+<p data-i18n="copyright">
 © 2026 ZERINAÉ — All Rights Reserved
 </p>
 
@@ -1067,47 +1094,361 @@ DARK MODE WITH SAVE
 
 const toggleButton = document.getElementById('theme-toggle');
 const loaderThemeButton = document.getElementById('loader-theme-toggle');
+const langSelect = document.getElementById('lang-select');
 
-/* LOAD SAVED THEME */
+const translations = {
+    en: {
+        brand: 'ZERINAÉ',
+        nav_products: 'PRODUCTS',
+        nav_prices: 'PRICES',
+        nav_news: 'NEWS',
+        nav_about: 'ABOUT',
+        nav_contact: 'CONTACT',
+        entering_maison: 'ENTERING THE MAISON',
+        produced_by: 'PRODUCED BY VELTARA CAPITAL DEVELOPMENT TEAM',
+        dark_mode: 'DARK MODE',
+        light_mode: 'LIGHT MODE',
+        hero_tagline: 'THE FUTURE OF MODERN LUXURY JEWELRY — EST. 2026',
+        coming_soon: 'COMING SOON',
+        private_atelier: 'PRIVATE ATELIER',
+        founded: 'FOUNDED',
+        luxury_evolution: 'LUXURY EVOLUTION',
+        upcoming_collections: 'UPCOMING COLLECTIONS',
+        featured_pieces: 'Featured Pieces',
+        private_preview_collections: 'PRIVATE PREVIEW COLLECTIONS',
+        radiance: 'Radiance',
+        radiance_desc: 'Diamond inspired luxury necklace concept.',
+        noir_ring: 'Noir Ring',
+        noir_ring_desc: 'Minimal luxury ring collection concept.',
+        lumiere: 'Lumière',
+        lumiere_desc: 'Elegant bracelet line with gold details.',
+        price_list: 'Price List',
+        estimated_luxury_pricing: 'ESTIMATED LUXURY PRICING',
+        luxury_rings: 'Luxury Rings',
+        diamond_necklaces: 'Diamond Necklaces',
+        bracelets: 'Bracelets',
+        private_editions: 'Private Editions',
+        custom_pricing: 'Custom Pricing',
+        announcements_title: 'Announcements',
+        latest_news_private_releases: 'LATEST HOUSE NEWS · PRIVATE RELEASES',
+        new_collection_soon: 'NEW COLLECTION COMING SOON',
+        cms_placeholder: 'NOT EDITABLE YET — FUTURE CMS / PANEL PLACEHOLDER',
+        maison: 'Maison',
+        house_of_zerinae: 'THE HOUSE OF ZERINAÉ',
+        about_title: 'About',
+        about_text:
+            'ZERINAÉ is a future-focused luxury jewelry house centered around timeless elegance, couture craftsmanship, and modern luxury aesthetics.<br><br>Every collection is envisioned with exclusivity, refined materials, and elevated minimalism designed for the next generation of luxury.<br><br>CEO — Selin Geron Zengin',
+        contact_title: 'Contact',
+        private_inquiries: 'PRIVATE INQUIRIES · PRESS · APPOINTMENTS',
+        email: 'Email',
+        instagram: 'Instagram',
+        appointments: 'Appointments',
+        not_available_yet: 'NOT AVAILABLE YET',
+        copyright: '© 2026 ZERINAÉ — All Rights Reserved'
+    },
+    de: {
+        brand: 'ZERINAÉ',
+        nav_products: 'PRODUKTE',
+        nav_prices: 'PREISE',
+        nav_news: 'NACHRICHTEN',
+        nav_about: 'ÜBER',
+        nav_contact: 'KONTAKT',
+        entering_maison: 'EINTRITT IN DIE MAISON',
+        produced_by: 'PRODUZIERT VON VELTARA CAPITAL DEVELOPMENT TEAM',
+        dark_mode: 'DUNKELMODUS',
+        light_mode: 'HELLMODUS',
+        hero_tagline: 'DIE ZUKUNFT MODERNER LUXUS-SCHMUCKWAREN — 2026',
+        coming_soon: 'BALD VERFÜGBAR',
+        private_atelier: 'PRIVATES ATELIER',
+        founded: 'GEGRÜNDET',
+        luxury_evolution: 'LUXUS-ENTWICKLUNG',
+        upcoming_collections: 'KOMMENDE KOLLEKTIONEN',
+        featured_pieces: 'Ausgewählte Stücke',
+        private_preview_collections: 'PRIVATE VORSCHAU-KOLLEKTIONEN',
+        radiance: 'Radiance',
+        radiance_desc: 'Luxuskollier inspiriert von Diamanten.',
+        noir_ring: 'Noir Ring',
+        noir_ring_desc: 'Minimalistisches Luxusring-Konzept.',
+        lumiere: 'Lumière',
+        lumiere_desc: 'Elegante Armbandlinie mit Golddetails.',
+        price_list: 'Preisliste',
+        estimated_luxury_pricing: 'GESCHÄTZTE LUXUSPREISE',
+        luxury_rings: 'Luxusringe',
+        diamond_necklaces: 'Diamantketten',
+        bracelets: 'Armbänder',
+        private_editions: 'Private Editionen',
+        custom_pricing: 'Individuelle Preisgestaltung',
+        announcements_title: 'Ankündigungen',
+        latest_news_private_releases: 'AKTUELLE HAUSNACHRICHTEN · PRIVATE VERÖFFENTLICHUNGEN',
+        new_collection_soon: 'NEUE KOLLEKTION BALD',
+        cms_placeholder: 'NOCH NICHT BEARBEITBAR — CMS / PANEL-PLATZHALTER',
+        maison: 'Maison',
+        house_of_zerinae: 'DAS HAUS VON ZERINAÉ',
+        about_title: 'Über',
+        about_text:
+            'ZERINAÉ ist ein zukunftsorientiertes Luxus-Schmuckhaus mit Fokus auf zeitlose Eleganz, Couture-Handwerk und moderne Luxusästhetik.<br><br>Jede Kollektion ist auf Exklusivität, edle Materialien und gehobenen Minimalismus für die nächste Generation von Luxus ausgelegt.<br><br>CEO — Selin Geron Zengin',
+        contact_title: 'Kontakt',
+        private_inquiries: 'PRIVATE ANFRAGEN · PRESSE · TERMINE',
+        email: 'E-Mail',
+        instagram: 'Instagram',
+        appointments: 'Termine',
+        not_available_yet: 'NOCH NICHT VERFÜGBAR',
+        copyright: '© 2026 ZERINAÉ — Alle Rechte vorbehalten'
+    },
+    nl: {
+        brand: 'ZERINAÉ',
+        nav_products: 'PRODUCTEN',
+        nav_prices: 'PRIJZEN',
+        nav_news: 'NIEUWS',
+        nav_about: 'OVER',
+        nav_contact: 'CONTACT',
+        entering_maison: 'BINNEN TREDEN IN DE MAISON',
+        produced_by: 'GEPRODUCEERD DOOR HET VELTARA CAPITAL DEVELOPMENT TEAM',
+        dark_mode: 'DONKERE MODUS',
+        light_mode: 'LICHTE MODUS',
+        hero_tagline: 'DE TOEKOMST VAN MODERNE LUXE SIERADEN — 2026',
+        coming_soon: 'BINNENKORT',
+        private_atelier: 'PRIVÉ-ATELIER',
+        founded: 'OPGERICHT',
+        luxury_evolution: 'LUXE EVOLUTIE',
+        upcoming_collections: 'AANKOMENDE COLLECTIES',
+        featured_pieces: 'Uitgelichte stukken',
+        private_preview_collections: 'PRIVÉ VOORVERTONINGSCOLLECTIES',
+        radiance: 'Radiance',
+        radiance_desc: 'Luxueuze ketting geïnspireerd op diamanten.',
+        noir_ring: 'Noir Ring',
+        noir_ring_desc: 'Minimalistisch luxeringconcept.',
+        lumiere: 'Lumière',
+        lumiere_desc: 'Elegante armbandlijn met goudaccenten.',
+        price_list: 'Prijslijst',
+        estimated_luxury_pricing: 'GESCHATTE LUXE PRIJZEN',
+        luxury_rings: 'Luxe ringen',
+        diamond_necklaces: 'Diamanten kettingen',
+        bracelets: 'Armbanden',
+        private_editions: 'Privé-edities',
+        custom_pricing: 'Maatwerkprijzen',
+        announcements_title: 'Aankondigingen',
+        latest_news_private_releases: 'LAATSTE HUISNIEUWS · PRIVÉ-RELEASES',
+        new_collection_soon: 'NIEUWE COLLECTIE BINNENKORT',
+        cms_placeholder: 'NOG NIET BEWERKBAAR — CMS / PANEL PLAATSHOUDER',
+        maison: 'Maison',
+        house_of_zerinae: 'HET HUIS VAN ZERINAÉ',
+        about_title: 'Over',
+        about_text:
+            'ZERINAÉ is een toekomstgericht luxe sieradenhuis, gericht op tijdloze elegantie, couture-vakmanschap en moderne luxe-esthetiek.<br><br>Elke collectie is ontworpen met exclusiviteit, verfijnde materialen en verheven minimalisme voor de volgende generatie luxe.<br><br>CEO — Selin Geron Zengin',
+        contact_title: 'Contact',
+        private_inquiries: 'PRIVÉ-VERZOEKEN · PERS · AFSPRAKEN',
+        email: 'E-mail',
+        instagram: 'Instagram',
+        appointments: 'Afspraken',
+        not_available_yet: 'NOG NIET BESCHIKBAAR',
+        copyright: '© 2026 ZERINAÉ — Alle rechten voorbehouden'
+    },
+    tr: {
+        brand: 'ZERINAÉ',
+        nav_products: 'ÜRÜNLER',
+        nav_prices: 'FİYATLAR',
+        nav_news: 'HABERLER',
+        nav_about: 'HAKKINDA',
+        nav_contact: 'İLETİŞİM',
+        entering_maison: 'MAISON’A GİRİYOR',
+        produced_by: 'VELTARA CAPITAL GELİŞTİRME EKİBİ TARAFINDAN ÜRETİLDİ',
+        dark_mode: 'KARANLIK MOD',
+        light_mode: 'AYDINLIK MOD',
+        hero_tagline: 'MODERN LÜKS MÜCEVHERİN GELECEĞİ — 2026',
+        coming_soon: 'YAKINDA',
+        private_atelier: 'ÖZEL ATÖLYE',
+        founded: 'KURULDU',
+        luxury_evolution: 'LÜKS EVRİM',
+        upcoming_collections: 'YAKLAŞAN KOLEKSİYONLAR',
+        featured_pieces: 'Öne Çıkan Parçalar',
+        private_preview_collections: 'ÖZEL ÖN İZLEME KOLEKSİYONLARI',
+        radiance: 'Radiance',
+        radiance_desc: 'Elmas esintili lüks kolye konsepti.',
+        noir_ring: 'Noir Ring',
+        noir_ring_desc: 'Minimal lüks yüzük koleksiyonu konsepti.',
+        lumiere: 'Lumière',
+        lumiere_desc: 'Altın detaylı zarif bileklik serisi.',
+        price_list: 'Fiyat Listesi',
+        estimated_luxury_pricing: 'TAHMİNİ LÜKS FİYATLAR',
+        luxury_rings: 'Lüks Yüzükler',
+        diamond_necklaces: 'Elmas Kolyeler',
+        bracelets: 'Bileklikler',
+        private_editions: 'Özel Seriler',
+        custom_pricing: 'Özel Fiyatlandırma',
+        announcements_title: 'Duyurular',
+        latest_news_private_releases: 'SON EV HABERLERİ · ÖZEL YAYINLAR',
+        new_collection_soon: 'YENİ KOLEKSİYON YAKINDA',
+        cms_placeholder: 'HENÜZ DÜZENLENEMEZ — GELECEK CMS / PANEL YER TUTUCU',
+        maison: 'Maison',
+        house_of_zerinae: 'ZERINAÉ’NİN EVİ',
+        about_title: 'Hakkında',
+        about_text:
+            'ZERINAÉ, zamansız zarafet, haute couture işçilik ve modern lüks estetiğine odaklanan geleceğe dönük bir lüks mücevher evidir.<br><br>Her koleksiyon; ayrıcalık, rafine materyaller ve yükseltilmiş minimalizm ile yeni nesil lüks için tasarlanır.<br><br>CEO — Selin Geron Zengin',
+        contact_title: 'İletişim',
+        private_inquiries: 'ÖZEL TALEPLER · BASIN · RANDEVULAR',
+        email: 'E-posta',
+        instagram: 'Instagram',
+        appointments: 'Randevular',
+        not_available_yet: 'ŞİMDİLİK YOK',
+        copyright: '© 2026 ZERINAÉ — Tüm hakları saklıdır'
+    },
+    ku: {
+        brand: 'ZERINAÉ',
+        nav_products: 'BERHEM',
+        nav_prices: 'BIHA',
+        nav_news: 'NÛÇE',
+        nav_about: 'DERBARÊ',
+        nav_contact: 'TÊKÎLÎ',
+        entering_maison: 'DAXULÎ MAISONÊ',
+        produced_by: 'JI ALIYÊ TÎMA PÊŞVECHÛNA VELTARA CAPITAL VE HAT ÇÊKIRIN',
+        dark_mode: 'MODA TARIK',
+        light_mode: 'MODA RONI',
+        hero_tagline: 'PÊŞEROJA ZÊRÊN LUXURY YÊ MODERN — 2026',
+        coming_soon: 'ZÛ DÊ BÊ',
+        private_atelier: 'ATELIERA TAYBET',
+        founded: 'دامەزراندن',
+        luxury_evolution: 'پەرەسەندنی لوکس',
+        upcoming_collections: 'کۆلیکشنە داهاتووەکان',
+        featured_pieces: 'پارچە تایبەتەکان',
+        private_preview_collections: 'پێشبینینی تایبەت',
+        radiance: 'Radiance',
+        radiance_desc: 'Têgîna serhildana zîvê ya diqerew.',
+        noir_ring: 'Noir Ring',
+        noir_ring_desc: 'Têgîna rînga lux a hêsan.',
+        lumiere: 'Lumière',
+        lumiere_desc: 'Xeta destbendê ya xweşik bi hûrguliyên zêr.',
+        price_list: 'Lîsteya biha',
+        estimated_luxury_pricing: 'BÊHAKIRINA TEXMÎNÎ YA LUX',
+        luxury_rings: 'Rîngên Lux',
+        diamond_necklaces: 'Kêlîkên Almas',
+        bracelets: 'Destbend',
+        private_editions: 'Weşanên تایبەت',
+        custom_pricing: 'Nirxandina Taybet',
+        announcements_title: 'Ragihandin',
+        latest_news_private_releases: 'NÛÇEYA MALÊ · DERKETINÊN TAYBET',
+        new_collection_soon: 'KOMÊLÊK NÛ ZÛ DÊ BÊ',
+        cms_placeholder: 'HÊJA NEKARIBE BIGUHERÎNE — CMS / PANELÊ PÊŞEROJÊ',
+        maison: 'Maison',
+        house_of_zerinae: 'XANIYA ZERINAÉ',
+        about_title: 'Derbarê',
+        about_text:
+            'ZERINAÉ xaniyeke zêrên luxê ye ku li ser xweşikîya domdar, pîşkariya couture û estetîka lux a nûjen fokus dike.<br><br>Her koleksiyon bi taybetî, materyalên paqij û minimalîzma bilind ji bo nifşa pêşerojê ya luxê tê dîtin.<br><br>CEO — Selin Geron Zengin',
+        contact_title: 'Têkilî',
+        private_inquiries: 'ÎSTIXBARÊN TAYBET · PRESS · DEMA DÎLAN',
+        email: 'E-name',
+        instagram: 'Instagram',
+        appointments: 'Dema dîlan',
+        not_available_yet: 'HÊJ NE AMADE',
+        copyright: '© 2026 ZERINAÉ — Hemû maf parastin'
+    },
+    ar: {
+        brand: 'ZERINAÉ',
+        nav_products: 'المنتجات',
+        nav_prices: 'الأسعار',
+        nav_news: 'الأخبار',
+        nav_about: 'حول',
+        nav_contact: 'اتصال',
+        entering_maison: 'دخول إلى الدار',
+        produced_by: 'تم الإنتاج بواسطة فريق تطوير VELTARA CAPITAL',
+        dark_mode: 'الوضع الداكن',
+        light_mode: 'الوضع الفاتح',
+        hero_tagline: 'مستقبل المجوهرات الفاخرة الحديثة — 2026',
+        coming_soon: 'قريباً',
+        private_atelier: 'استوديو خاص',
+        founded: 'تأسست',
+        luxury_evolution: 'تطور الفخامة',
+        upcoming_collections: 'المجموعات القادمة',
+        featured_pieces: 'قطع مميزة',
+        private_preview_collections: 'معاينات خاصة للمجموعات',
+        radiance: 'Radiance',
+        radiance_desc: 'فكرة عقد فخم مستوحاة من الألماس.',
+        noir_ring: 'Noir Ring',
+        noir_ring_desc: 'فكرة خاتم فخم بتصميم بسيط.',
+        lumiere: 'Lumière',
+        lumiere_desc: 'خط أساور أنيق بتفاصيل ذهبية.',
+        price_list: 'قائمة الأسعار',
+        estimated_luxury_pricing: 'أسعار فاخرة تقديرية',
+        luxury_rings: 'خواتم فاخرة',
+        diamond_necklaces: 'قلائد الألماس',
+        bracelets: 'أساور',
+        private_editions: 'إصدارات خاصة',
+        custom_pricing: 'تسعير مخصص',
+        announcements_title: 'الإعلانات',
+        latest_news_private_releases: 'آخر أخبار الدار · إصدارات خاصة',
+        new_collection_soon: 'مجموعة جديدة قريباً',
+        cms_placeholder: 'غير قابل للتحرير بعد — عنصر نائب لنظام إدارة المحتوى',
+        maison: 'الدار',
+        house_of_zerinae: 'دار ZERINAÉ',
+        about_title: 'حول',
+        about_text:
+            'ZERINAÉ دار مجوهرات فاخرة تركز على الأناقة الخالدة والحرفية الراقية وجماليات الفخامة الحديثة.<br><br>تُصمَّم كل مجموعة بروح الحصرية والمواد الراقية والبساطة الرفيعة للجيل القادم من الفخامة.<br><br>المدير التنفيذي — Selin Geron Zengin',
+        contact_title: 'اتصال',
+        private_inquiries: 'استفسارات خاصة · صحافة · مواعيد',
+        email: 'البريد الإلكتروني',
+        instagram: 'إنستغرام',
+        appointments: 'المواعيد',
+        not_available_yet: 'غير متاح بعد',
+        copyright: '© 2026 ZERINAÉ — جميع الحقوق محفوظة'
+    }
+};
 
-if(localStorage.getItem('theme') === 'dark'){
-
-    document.body.classList.add('dark-mode');
-
-    toggleButton.innerText = 'LIGHT MODE';
-    loaderThemeButton.innerText = 'LIGHT MODE';
-
+function updateThemeButtons(){
+    const isDark = document.body.classList.contains('dark-mode');
+    const key = isDark ? 'light_mode' : 'dark_mode';
+    toggleButton.textContent = translations[currentLang][key];
+    loaderThemeButton.textContent = translations[currentLang][key];
 }
 
-/* TOGGLE FUNCTION */
+function applyLanguage(lang){
+    currentLang = translations[lang] ? lang : 'en';
+
+    document.documentElement.lang = currentLang;
+
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        const value = translations[currentLang][key];
+        if(typeof value === 'string'){
+            if(key === 'about_text'){
+                el.innerHTML = value;
+            } else {
+                el.textContent = value;
+            }
+        }
+    });
+
+    document.title = currentLang === 'en'
+        ? 'ZERINAÉ — Luxury Jewelry House'
+        : translations[currentLang].brand + ' — Luxury Jewelry House';
+
+    localStorage.setItem('lang', currentLang);
+    langSelect.value = currentLang;
+    updateThemeButtons();
+}
 
 function toggleDarkMode(){
-
     document.body.classList.toggle('dark-mode');
 
-    if(document.body.classList.contains('dark-mode')){
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    updateThemeButtons();
+}
 
-        localStorage.setItem('theme', 'dark');
+let currentLang = localStorage.getItem('lang') || 'en';
 
-        toggleButton.innerText = 'LIGHT MODE';
-        loaderThemeButton.innerText = 'LIGHT MODE';
-
-    } else {
-
-        localStorage.setItem('theme', 'light');
-
-        toggleButton.innerText = 'DARK MODE';
-        loaderThemeButton.innerText = 'DARK MODE';
-
-    }
-
+if(localStorage.getItem('theme') === 'dark'){
+    document.body.classList.add('dark-mode');
 }
 
 toggleButton.addEventListener('click', toggleDarkMode);
 loaderThemeButton.addEventListener('click', toggleDarkMode);
 
-toggleButton.addEventListener('click', toggleDarkMode);
-loaderThemeButton.addEventListener('click', toggleDarkMode);
+langSelect.addEventListener('change', (e) => {
+    applyLanguage(e.target.value);
+});
+
+applyLanguage(currentLang);
+updateThemeButtons();
 
 </script>
 
